@@ -4,7 +4,7 @@ import java.util.*;
 public class DecisionTree {
 	
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
+		
 		String trainingSet1 = "src/data_sets2/training_set.csv";
 		String validationSet1 = "src/data_sets2/validation_set.csv";
 		String testSet1 = "src/data_sets2/test_set.csv";
@@ -352,69 +352,8 @@ public class DecisionTree {
 		}
 		
 		else {
-//			if(dataSet.size() == 2) {
-//				System.out.println();
-//			}
-			//[{XB=1, XC=1, XD=0, XE=0, XF=0, XG=0, XH=1, XI=0, XJ=1, XK=0, XL=0, XM=0, XN=0, XO=1, XP=0, XQ=1, XR=0, Class=0, XS=0, XT=0, XU=0}, {XB=1, XC=1, XD=0, XE=0, XF=0, XG=0, XH=1, XI=0, XJ=1, XK=0, XL=0, XM=0, XN=0, XO=1, XP=0, XQ=1, XR=0, Class=1, XS=0, XT=0, XU=0}]
-//			List<Map<String,Integer>> ds = new ArrayList<>();
-//			Map<String,Integer> first = new HashMap<>();
-//			Map<String,Integer> second = new HashMap<>();
-//			
-//			first.put("XB", 1);
-//			first.put("XC", 1);
-//			first.put("XD", 0);
-//			first.put("XE", 0);
-//			first.put("XF", 0);
-//			first.put("XG", 0);
-//			first.put("XH", 1);
-//			first.put("XI", 0);
-//			first.put("XJ", 1);
-//			first.put("XK", 0);
-//			first.put("XL", 0);
-//			first.put("XM", 0);
-//			first.put("XN", 0);
-//			first.put("XO", 1);
-//			first.put("XP", 0);
-//			first.put("XQ", 1);
-//			first.put("XR", 0);
-//			first.put("Class", 0);
-//			first.put("XS", 0);
-//			first.put("XT", 0);
-//			first.put("XU", 0);
-//			//{XB=1, XC=1, XD=0, XE=0, XF=0, XG=0, XH=1, XI=0, XJ=1, XK=0, XL=0, XM=0, XN=0, XO=1, XP=0, XQ=1, XR=0, Class=1, XS=0, XT=0, XU=0}
-//			second.put("XB", 1);
-//			second.put("XC", 1);
-//			second.put("XD", 0);
-//			second.put("XE", 0);
-//			second.put("XF", 0);
-//			second.put("XG", 0);
-//			second.put("XH", 1);
-//			second.put("XI", 0);
-//			second.put("XJ", 1);
-//			second.put("XK", 0);
-//			second.put("XL", 0);
-//			second.put("XM", 0);
-//			second.put("XN", 0);
-//			second.put("XO", 1);
-//			second.put("XP", 0);
-//			second.put("XQ", 1);
-//			second.put("XR", 0);
-//			second.put("Class", 1);
-//			second.put("XS", 0);
-//			second.put("XT", 0);
-//			second.put("XU", 0);
-//			if(dataSet.size() == 2) {
-//				if(dataSet.get(0).equals(first)) {
-//					if(dataSet.get(1).equals(second)) {
-//						int x = -1;
-//						int y = x;
-//					}
-//				}
-//			}
 			String bestAttribute = bestGainAttribute(dataSet, method);
-//			if(bestAttribute.isEmpty()) {
-//				System.out.println("sdf");
-//			}
+
 			List<Map<String, Integer>> s0 = new ArrayList<>(), s1 = new ArrayList<>();
 			
 			for(Map<String, Integer> dataPoint: dataSet) {
@@ -448,9 +387,7 @@ public class DecisionTree {
 	
 	public static String bestGainAttribute(List<Map<String,Integer>> dataSet, String method) {
 		String bestAttribute = "";
-//		if(dataSet.size() == 2) {
-//			System.out.println();
-//		}
+
 		double initialEntropy = initialEntropy(dataSet);
 		
 		double maxInformationGain = 0;
@@ -479,9 +416,7 @@ public class DecisionTree {
 				bestAttribute = attribute;
 			}
 		}
-//		if(bestAttribute.isEmpty()) {
-//			System.out.println();
-//		}
+
 		return bestAttribute;
 	}
 	
@@ -619,14 +554,6 @@ public class DecisionTree {
 			oneFraction = (double)((double)(oneCount))/((double)(zeroCount + oneCount));
 			oneFractionLog = Math.log(oneFraction)/Math.log((double)2);
 		}
-//		if(zeroCount == 0 || oneCount ==0) {
-//			return entropy;
-//		}
-//		double zeroFraction = (double)((double)(zeroCount))/((double)(zeroCount + oneCount));
-//		double oneFraction = (double)((double)(oneCount))/((double)(zeroCount + oneCount));
-//		
-//		double zeroFractionLog = Math.log(zeroFraction)/Math.log((double)2);
-//		double oneFractionLog = Math.log(oneFraction)/Math.log((double)2);
 		
 		entropy = -(zeroFraction*zeroFractionLog + oneFraction*oneFractionLog);
 		return entropy;
